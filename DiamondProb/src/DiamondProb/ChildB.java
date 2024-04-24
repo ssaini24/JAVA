@@ -1,9 +1,6 @@
 package DiamondProb;
 
-public interface ChildB extends ParentInterface {
+public interface ChildB {
 
-    @Override
-    default void foo() {
-        System.out.println("ChildB's foo");
-    }
+    void foo();
 }

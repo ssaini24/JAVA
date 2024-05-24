@@ -4,7 +4,7 @@ public class Parent {
 
     int age;
     Parent(){
-        toString();
+        System.out.println(super.toString());
         System.out.println("in parent");
     }
 }

@@ -1,13 +1,17 @@
+import ExceptionPkg.MyCustomException;
+import ExceptionPkg.TestingException;
 import FinalOverriden.Child;
 import FunctionalInterfacePkg.LambdaExpression;
 
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-
+        // on creating child object, internally parent object is created first, leads in
+        // invoking parent class constructor.
         Child child = new Child(23);
 
         System.out.println(child.toString());
@@ -38,14 +42,24 @@ public class Main {
 
         System.out.println(Integer.compare(1,2));
 
+//       // uncomment below to check exception behaviour
 //        try {
-//            TestingException.test();
+//            // checked & custom exception must needs to be handled with try catch or to be thrown
+//            TestingException.customException();
 //        } catch (MyCustomException e) {
-//            throw new RuntimeException(e);
+//            System.out.println(e.getMessage());
+//        } finally {
+//            System.out.println("finally will get executed if we return from function in try/catch but will never execute if an exception occurred");
 //        }
+//
+//        // unchecked exception could be handled or be thrown
+//        TestingException.runTimeException();
 
         LambdaExpression lambdaExpression = new LambdaExpression();
         lambdaExpression.canFlyLambdaImpl();
+
+        Queue<Integer> queue =  new LinkedList<>();
+        queue.add(2);
     }
 
     private static void update(Integer a){

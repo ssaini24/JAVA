@@ -9,6 +9,6 @@ public class Child extends Parent {
 
     @Override
     public String toString(){
-        return "";
+        return "hello!";
     }
 }

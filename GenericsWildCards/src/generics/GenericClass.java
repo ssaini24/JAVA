@@ -11,4 +11,9 @@ public class GenericClass<T,K> {
     public T getValue(){
         return val;
     }
+
+    public <T, P> void genericMethod(T value, P value2){
+        System.out.println(value);
+        return;
+    }
 }

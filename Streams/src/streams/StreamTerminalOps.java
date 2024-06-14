@@ -9,6 +9,8 @@ public class StreamTerminalOps {
 
     public static void ops(){
 
+        System.out.println("******Terminal Ops***********");
+
         // foreach() -> perform action on each element of stream
         List<Integer> arr = Arrays.asList(2, 30, 9);
         arr.stream().forEach((Integer a) -> System.out.println(a));

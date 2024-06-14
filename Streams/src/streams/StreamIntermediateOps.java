@@ -11,6 +11,8 @@ public class StreamIntermediateOps {
 
   public static void ops() {
 
+    System.out.println("******Streams Intermediate Ops***********");
+
     Stream<String> stringStream = Stream.of("I", "Love", "Java");
 
     // filter() -> to filter the elements

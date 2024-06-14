@@ -8,6 +8,9 @@ import java.util.stream.IntStream;
 public class StreamVsParallelStream {
 
     public static void vs() {
+
+        System.out.println("******Seq Vs Parallel***********");
+
         // Use a much larger list for better comparison
         List<Integer> list = IntStream.rangeClosed(1, 1000000)
                 .boxed()

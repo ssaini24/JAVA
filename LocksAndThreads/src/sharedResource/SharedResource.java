@@ -43,7 +43,7 @@ public class SharedResource {
         try {
             readWriteLock.writeLock().lock();
             System.out.println("write lock acquired by: " + Thread.currentThread().getName());
-            isElementPresent = true;
+            isElementPresent = false;
             System.out.println("write lock released by: " + Thread.currentThread().getName());
             readWriteLock.writeLock().unlock();
         } catch (Exception e){
@@ -53,7 +53,7 @@ public class SharedResource {
     public void optimisticReadLockProducer(StampedLock stampedLock){
         try {
             Long stamp = stampedLock.tryOptimisticRead();
-            System.out.println("taken optimistic lock");
+            System.out.println("taken optimistic lock..now trying to update value...");
             val = 11;
             isElementPresent = true;
             sleep(5000);
@@ -75,6 +75,7 @@ public class SharedResource {
             System.out.println("taken write lock");
             val = 11;
             isElementPresent = true;
+            System.out.println("validating write lock stamp: " + stampedLock.validate(stamp));
             stampedLock.unlockWrite(stamp);
             System.out.println("released write lock");
         } catch (Exception e){

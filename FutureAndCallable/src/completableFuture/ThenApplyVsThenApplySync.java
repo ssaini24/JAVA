@@ -29,7 +29,7 @@ public class ThenApplyVsThenApplySync {
                 }
         , threadPoolExecutor).thenApply((String a) -> {
             System.out.println("thenApply same thread used: " + Thread.currentThread().getName());
-            return a + "with chaining";
+            return a + " with chaining";
         });
 
         try {
@@ -41,7 +41,7 @@ public class ThenApplyVsThenApplySync {
         CompletableFuture<?> future1 = CompletableFuture.supplyAsync(
                 () -> {
                     try {
-                        sleep(1000);
+                        sleep(5000);
                         System.out.println("thenApplySync thread used: " + Thread.currentThread().getName());
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -50,7 +50,7 @@ public class ThenApplyVsThenApplySync {
                 }
         , threadPoolExecutor).thenApplyAsync((String a) -> {
             System.out.println("thenApplySync diff thread used: " + Thread.currentThread().getName());
-            return a + "with chaining";
+            return a + " with chaining";
         });
 
         try {

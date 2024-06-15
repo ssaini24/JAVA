@@ -10,13 +10,6 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        // on creating child object, internally parent object is created first, leads in
-        // invoking parent class constructor.
-        Child child = new Child(23);
-
-        System.out.println(child.toString());
-
-
         // A lambda expression for functional interface
         Predicate<Integer> isEven = (Integer val) -> {
             if (val%2 == 0)
@@ -25,7 +18,7 @@ public class Main {
             return false;
         };
 
-        // A anonymous implementation for functional interface
+        // An anonymous implementation for functional interface
         Predicate<Integer> isEvenAnon = new Predicate<Integer>() {
             @Override
             public boolean test(Integer integer) {
@@ -33,14 +26,27 @@ public class Main {
             }
         };
 
+        System.out.println(isEven.test(2));
+        System.out.println(isEven.test(3));
+
+        LambdaExpression lambdaExpression = new LambdaExpression();
+        lambdaExpression.canFlyLambdaImpl();
+
+        // ********************
         Integer a = 10;
         update(a);
         System.out.println(a);
 
-        System.out.println(isEven.test(2));
-        System.out.println(isEven.test(3));
-
         System.out.println(Integer.compare(1,2));
+
+        // ********************
+        // on creating child object, internally parent object is created first, leads in
+        // invoking parent class constructor.
+        Child child = new Child(23);
+
+        System.out.println(child.toString());
+
+         // ********************
 
 //       // uncomment below to check exception behaviour
 //        try {
@@ -54,12 +60,6 @@ public class Main {
 //
 //        // unchecked exception could be handled or be thrown
 //        TestingException.runTimeException();
-
-        LambdaExpression lambdaExpression = new LambdaExpression();
-        lambdaExpression.canFlyLambdaImpl();
-
-        Queue<Integer> queue =  new LinkedList<>();
-        queue.add(2);
     }
 
     private static void update(Integer a){

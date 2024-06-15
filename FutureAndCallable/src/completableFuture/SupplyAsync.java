@@ -23,8 +23,7 @@ public class SupplyAsync {
                         throw new RuntimeException(e);
                     }
                     return "task completed";
-                }
-        );
+                }, threadPoolExecutor);
 
         try {
             System.out.println(future.get());

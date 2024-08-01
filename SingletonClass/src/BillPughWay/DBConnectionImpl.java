@@ -1,14 +1,28 @@
 package BillPughWay;
 
+import java.util.concurrent.CountDownLatch;
+
 public class DBConnectionImpl {
 
     public static void makeDBConnection(){
 
+        CountDownLatch latch = new CountDownLatch(1);
+
         Thread thread1 = new Thread(()->{
+            try {
+                latch.await();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             DBConnection.getDBInstance();
         });
 
         Thread thread2 = new Thread(()->{
+            try {
+                latch.await();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             DBConnection.getDBInstance();
         });
 
@@ -17,11 +31,6 @@ public class DBConnectionImpl {
         thread1.start();
         thread2.start();
 
-        try {
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        latch.countDown();
     }
 }
